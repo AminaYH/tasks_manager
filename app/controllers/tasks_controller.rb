@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:update, :destroy]
+  before_action :set_task, only: [ :update, :destroy ]
 
   def index
     @tasks = Task.all.order(created_at: :desc)
@@ -14,7 +14,6 @@ class TasksController < ApplicationController
         format.html { redirect_to tasks_path, notice: "Task was successfully created." }
       end
     else
-      # handle validation errors
       render :index, status: :unprocessable_entity
     end
   end
@@ -22,13 +21,14 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to tasks_path, notice: "Task updated successfully." }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@task, partial: "task", locals: { task: @task }) }
+        format.html { redirect_to tasks_path }
       end
     else
-      render :index, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
+
 
   def destroy
     @task.destroy

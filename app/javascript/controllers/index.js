@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import InlineEditController from "./inline_edit_controller"
+
+application.register("inline-edit", InlineEditController)
 
 import FormValidationController from "./form_validation_controller"
 
