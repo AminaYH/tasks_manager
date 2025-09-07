@@ -21,8 +21,8 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@task, partial: "task", locals: { task: @task }) }
-        format.html { redirect_to tasks_path }
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(@task, partial: "task", locals: { task: @task }) }
+      format.html { redirect_to tasks_path }
       end
     else
       render :edit, status: :unprocessable_entity
