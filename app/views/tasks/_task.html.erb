@@ -1,0 +1,16 @@
+<li id="<%= dom_id(task) %>" class="tasks__item <%= 'tasks__item__completed' if task.completed %>">
+  <div class="task-content">
+    <div class="task-title"><%= task.title %></div>
+    <div class="task-description"><%= task.description %></div>
+  </div>
+
+  <div class="task-actions">
+    <% if task.completed %>
+      <%= button_to "Uncheck", task_path(task), method: :patch, params: { task: { completed: false } }, class: "btn btn-sm btn-warning" %>
+    <% else %>
+      <%= button_to "Check", task_path(task), method: :patch, params: { task: { completed: true } }, class: "btn btn-sm btn-success" %>
+    <% end %>
+
+    <%= button_to "Delete", task_path(task), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+  </div>
+</li>

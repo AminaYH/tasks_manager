@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - ./docker-env/task_manager.env
+    volumes:
+      - pg_data_v2:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -h 127.0.0.1 || exit 1"]
+      interval: 5s
+      retries: 5
+      timeout: 5s
+
+  web:
+    build:
+      context: .
+      target: dev
+    env_file:
+      - ./docker-env/task_manager.env
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/rails
+      - ./docker-entrypoint.sh:/rails/docker-entrypoint.sh
+      - rails_tmp_v2:/rails/tmp
+      - rails_log_v2:/rails/log
+      - rails_storage_v2:/rails/storage
+      - rails_public_v2:/rails/public
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/up || exit 1"]
+      interval: 10s
+      retries: 5
+
+volumes:
+  pg_data_v2:
+  rails_tmp_v2:
+  rails_log_v2:
+  rails_storage_v2:
+  rails_public_v2:

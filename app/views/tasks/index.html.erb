@@ -1,0 +1,11 @@
+<div class="tasks-container">
+  <h1 class="mb-4 text-center">Tasks</h1>
+
+  <%= turbo_frame_tag "new_task" do %>
+    <%= render "form", task: @task %>
+  <% end %>
+
+  <ul id="tasks-list" class="list-unstyled">
+    <%= render partial: "task", collection: @tasks %>
+  </ul>
+</div>

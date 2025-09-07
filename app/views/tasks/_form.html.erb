@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "new_task" do %>
+  <%= form_with(model: task, class: "tasks__item", local: false) do |form| %>
+    <div class="mb-2">
+      <%= form.text_field :title, required: true, placeholder: "Title", class: "form-control" %>
+    </div>
+    <div class="mb-2">
+      <%= form.text_area :description, placeholder: "Description", class: "form-control" %>
+    </div>
+    <div class="mb-2">
+      <%= form.submit "Create", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

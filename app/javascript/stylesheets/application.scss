@@ -1,0 +1,143 @@
+@use "bootstrap/scss/bootstrap" as *;
+
+// Centered container
+.tasks-container {
+  max-width: 650px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #f0f2f5;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+// Task items & forms
+.tasks__item {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+  }
+}
+
+// Completed tasks
+.tasks__item__completed {
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  color: #868e96;
+  text-decoration: line-through;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+// Task actions (buttons)
+.task-actions {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: flex-end;
+
+  .btn {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.45rem 0.95rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    cursor: pointer;
+  }
+
+  .btn-success { // Check → soft teal
+    background: linear-gradient(135deg, #38b000, #20c997);
+    border: none;
+    color: #fff;
+
+    &:hover {
+      background: linear-gradient(135deg, #2f9500, #17a589);
+    }
+  }
+
+  .btn-warning { // Uncheck → soft orange
+    background: linear-gradient(135deg, #ffd60a, #ff922b);
+    border: none;
+    color: #212529;
+
+    &:hover {
+      background: linear-gradient(135deg, #e6c700, #e67300);
+    }
+  }
+
+  .btn-danger { // Delete → soft red
+    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+    border: none;
+    color: #fff;
+
+    &:hover {
+      background: linear-gradient(135deg, #e55a5a, #e04848);
+    }
+  }
+}
+
+// Form inputs
+.tasks__item input.form-control,
+.tasks__item textarea.form-control {
+  margin-bottom: 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ced4da;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+
+  &:focus {
+    border-color: #845ec2;
+    box-shadow: 0 0 0 0.2rem rgba(132,94,194,0.25);
+  }
+}
+
+// Create button → violet gradient
+.tasks__item input[type="submit"] {
+  align-self: flex-start;
+  background: linear-gradient(135deg, #845ec2, #d65db1);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+
+  &:hover {
+    background: linear-gradient(135deg, #7044a8, #c1479c);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+}
+// Task content
+.task-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem; // space between title & description
+}
+
+.task-title {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #343a40; // dark text for title
+}
+
+.task-description {
+  font-size: 0.95rem;
+  color: #6c757d; // softer text for description
+}
