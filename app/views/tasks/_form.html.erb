@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "new_task" do %>
-  <%= form_with(model: task, class: "tasks__item", local: false) do |form| %>
+  <%= form_with(model: task, class: "tasks__item needs-validation", data: { controller: "form-validation" }, local: false) do |form| %>
     <div class="mb-2">
       <%= form.text_field :title, required: true, placeholder: "Title", class: "form-control" %>
     </div>
