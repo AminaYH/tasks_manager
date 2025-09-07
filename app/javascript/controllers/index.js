@@ -8,6 +8,9 @@ import InlineEditController from "./inline_edit_controller"
 
 application.register("inline-edit", InlineEditController)
 
+import ToggleCompletionController from "./toggle_completion_controller"
+application.register("toggle-completion", ToggleCompletionController)
+
 import FormValidationController from "./form_validation_controller"
 
 application.register("form-validation", FormValidationController)
