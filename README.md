@@ -8,6 +8,9 @@ A Rails 7 task management app with PostgreSQL, Turbo, and Stimulus, fully contai
 
 Everything is handled by Docker Compose and the entrypoint script. To get started:
 
+* **Clone the repository:**  
+  `git clone https://github.com/AminaYH/tasks_manager.git && cd tasks_manager`
+
 * **Build and start containers:**  
   `docker-compose build && docker-compose up -d`
 
