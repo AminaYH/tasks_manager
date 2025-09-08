@@ -27,23 +27,31 @@ export default class extends Controller {
   }
 
   save(originalEl, inputEl, field) {
-    const taskId = this.element.dataset.taskId
-    const value = inputEl.value
+  const taskId = this.element.dataset.taskId
+  const value = inputEl.value
+  const token = document.querySelector('meta[name="csrf-token"]').content
 
-    const token = document.querySelector('meta[name="csrf-token"]').content
-
-    fetch(`/tasks/${taskId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "text/vnd.turbo-stream.html",
-        "X-CSRF-Token": token
-      },
-      body: JSON.stringify({ task: { [field]: value } })
+  fetch(`/tasks/${taskId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "text/vnd.turbo-stream.html",
+      "X-CSRF-Token": token
+    },
+    body: JSON.stringify({ task: { [field]: value } })
+  })
+    .then(response => {
+      if (response.ok) {
+        originalEl.innerText = value
+      } else {
+        console.error("Update failed", response)
+      }
+      inputEl.replaceWith(originalEl)
     })
-      .then(response => {
-        if (!response.ok) console.error("Update failed", response)
-      })
-      .catch(err => console.error("Error updating task:", err))
-  }
+    .catch(err => {
+      console.error("Error updating task:", err)
+      inputEl.replaceWith(originalEl)
+    })
+}
+
 }
