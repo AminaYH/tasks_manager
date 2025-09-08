@@ -5,21 +5,18 @@
       <div class="task-description"><%= task.description %></div>
     </div>
 
-    <div class="task-actions" data-controller="toggle-completion"
-         data-toggle-completion-task-id-value="<%= task.id %>"
-         data-toggle-completion-completed-value="<%= task.completed %>">
-
-    <%= button_to (task.completed ? "Uncheck" : "Check"),
-          task_path(task),
-          method: :patch,
-          params: { task: { completed: !task.completed } },
-          class: "btn btn-sm #{task.completed ? 'btn-warning' : 'btn-success'}",
-          form: { data: { turbo_frame: dom_id(task) } } %>
+    <div class="task-actions">
+      <%= button_to (task.completed ? "Uncheck" : "Check"),
+            task_path(task),
+            method: :patch,
+            params: { task: { completed: !task.completed } },
+            class: "btn btn-sm #{task.completed ? 'btn-warning' : 'btn-success'}",
+            form: { data: { turbo_frame: dom_id(task) } } %>
 
       <%= button_to "Delete", task_path(task),
-          method: :delete,
-          data: { turbo_confirm: "Are you sure?" },
-          class: "btn btn-sm btn-danger" %>
+            method: :delete,
+            data: { turbo_confirm: "Are you sure?" },
+            class: "btn btn-sm btn-danger" %>
     </div>
   <% end %>
 </li>

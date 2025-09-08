@@ -5,6 +5,8 @@
     <%= render "form", task: @task %>
   <% end %>
 
+  <%= turbo_stream_from "tasks_list" %> <!-- THIS SUBSCRIBES TO BROADCASTS -->
+
   <ul id="tasks-list" class="list-unstyled">
     <%= render partial: "task", collection: @tasks %>
   </ul>
