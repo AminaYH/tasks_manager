@@ -9,7 +9,6 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-
 .tasks__item {
   width: 100%;
   background: #ffffff;
@@ -34,7 +33,6 @@
   }
 }
 
-
 .tasks__item__completed {
   background: #e9ecef;
   color: #868e96;
@@ -43,53 +41,11 @@
   opacity: 0.8;
 }
 
-
 .task-actions {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-end;
-
-  .btn {
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 0.45rem 0.9rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    cursor: pointer;
-  }
-
-  .btn-success { 
-    background: #51cf66;
-    border: none;
-    color: #fff;
-
-    &:hover {
-      background: #40c057;
-    }
-  }
-
-  .btn-warning { 
-    background: #fcc419;
-    border: none;
-    color: #212529;
-
-    &:hover {
-      background: #fab005;
-    }
-  }
-
-  .btn-danger { 
-    background: #ff6b6b;
-    border: none;
-    color: #fff;
-
-    &:hover {
-      background: #fa5252;
-    }
-  }
 }
-
 
 .tasks__item input.form-control,
 .tasks__item textarea.form-control {
@@ -106,39 +62,8 @@
   }
 }
 
-
-.tasks__item input[type="submit"] {
-  align-self: flex-start;
-  background: #7950f2;
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.6rem 1.3rem;
-  border-radius: 0.6rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: all 0.3s;
-
-  &:hover {
-    background: #7048e8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  }
-}
-
-
 .task-content {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-}
-
-.task-title {
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: #343a40; 
-}
-
-.task-description {
-  font-size: 0.95rem;
-  color: #6c757d; 
 }

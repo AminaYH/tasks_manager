@@ -15,16 +15,18 @@
     "style-loader": "^3.3.4"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.9",
-    "esbuild-plugin-sass": "^1.0.1"
+    "esbuild-plugin-sass": "^1.0.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "3",
+    "tailwindcss-cli": "^0.1.2"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
-    "build:watch": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets --watch",
+    "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "sass --load-path=node_modules app/javascript/stylesheets/application.scss app/assets/builds/application.css",
-    "watch:css": "sass --watch --load-path=node_modules app/javascript/stylesheets/application.scss:app/assets/builds/application.css",
-    "watch": "yarn build:watch & yarn watch:css"
+    "build:tailwind": "yarn tailwindcss-cli -i ./app/javascript/stylesheets/tailwind.scss -o ./app/assets/builds/application.css --minify",
+    "build": "yarn build:tailwind && yarn build:css && yarn build:js",
+    "watch": "yarn build:tailwind --watch & yarn watch:css & yarn build:js --watch",
   }
-
-
 }

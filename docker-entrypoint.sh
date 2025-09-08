@@ -32,8 +32,11 @@ db_setup
 
 case "$RAILS_ENV" in
   development)
-    yarn build:watch &
+    yarn build
+    
+    yarn build:tailwind --watch &
     yarn watch:css &
+    yarn build:js --watch &
     exec bundle exec rails server -b 0.0.0.0 -p 3000
     ;;
   test)
