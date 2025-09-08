@@ -3,22 +3,19 @@ set -e
 
 cd /rails || exit 1
 
-# Add Bundler bin to PATH
 export PATH="/usr/local/bundle/bin:$PATH"
 
-# Remove stale server PID
 [ -f tmp/pids/server.pid ] && rm -f tmp/pids/server.pid
 
-# Dev setup
 dev_setup() {
   bundle config unset without
-  bundle config --global frozen 0
-  bundle install --with development test
+  bundle config unset frozen         
+  bundle config set --local with 'development test'
+  bundle install                    
   yarn install --check-files
   bundle exec rails assets:precompile
 }
 
-# Database setup
 db_setup() {
   if [ -n "$POSTGRES_HOST" ]; then
     echo "Waiting for $POSTGRES_HOST:${POSTGRES_PORT:-5432} ..."
@@ -30,13 +27,13 @@ db_setup() {
   bundle exec rails db:seed 2>/dev/null || true
 }
 
-# Run setup
 dev_setup
 db_setup
 
-# Start Rails server or test environment
 case "$RAILS_ENV" in
   development)
+    yarn build:watch &
+    yarn watch:css &
     exec bundle exec rails server -b 0.0.0.0 -p 3000
     ;;
   test)

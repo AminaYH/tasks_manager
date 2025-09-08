@@ -1,16 +1,15 @@
 @use "bootstrap/scss/bootstrap" as *;
 
-// Centered container
 .tasks-container {
   max-width: 650px;
   margin: 3rem auto;
   padding: 2rem;
-  background: #f0f2f5;
+  background: #f9f9f9;
   border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
 }
 
-// Task items & forms
+
 .tasks__item {
   width: 100%;
   background: #ffffff;
@@ -20,77 +19,78 @@
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   }
 
   span {
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 0.7rem;
+    color: #495057; 
   }
 }
 
-// Completed tasks
+
 .tasks__item__completed {
-  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  background: #e9ecef;
   color: #868e96;
   text-decoration: line-through;
   font-style: italic;
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
-// Task actions (buttons)
+
 .task-actions {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.5rem;
   justify-content: flex-end;
 
   .btn {
     font-size: 0.9rem;
     font-weight: 500;
-    padding: 0.45rem 0.95rem;
+    padding: 0.45rem 0.9rem;
     border-radius: 0.5rem;
     transition: all 0.3s;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     cursor: pointer;
   }
 
-  .btn-success { // Check → soft teal
-    background: linear-gradient(135deg, #38b000, #20c997);
+  .btn-success { 
+    background: #51cf66;
     border: none;
     color: #fff;
 
     &:hover {
-      background: linear-gradient(135deg, #2f9500, #17a589);
+      background: #40c057;
     }
   }
 
-  .btn-warning { // Uncheck → soft orange
-    background: linear-gradient(135deg, #ffd60a, #ff922b);
+  .btn-warning { 
+    background: #fcc419;
     border: none;
     color: #212529;
 
     &:hover {
-      background: linear-gradient(135deg, #e6c700, #e67300);
+      background: #fab005;
     }
   }
 
-  .btn-danger { // Delete → soft red
-    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  .btn-danger { 
+    background: #ff6b6b;
     border: none;
     color: #fff;
 
     &:hover {
-      background: linear-gradient(135deg, #e55a5a, #e04848);
+      background: #fa5252;
     }
   }
 }
 
-// Form inputs
+
 .tasks__item input.form-control,
 .tasks__item textarea.form-control {
   margin-bottom: 0.7rem;
@@ -101,43 +101,44 @@
   transition: all 0.2s;
 
   &:focus {
-    border-color: #845ec2;
-    box-shadow: 0 0 0 0.2rem rgba(132,94,194,0.25);
+    border-color: #7950f2; 
+    box-shadow: 0 0 0 0.2rem rgba(121,80,242,0.2);
   }
 }
 
-// Create button → violet gradient
+
 .tasks__item input[type="submit"] {
   align-self: flex-start;
-  background: linear-gradient(135deg, #845ec2, #d65db1);
+  background: #7950f2;
   border: none;
   color: #fff;
   font-weight: 600;
   padding: 0.6rem 1.3rem;
   border-radius: 0.6rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   transition: all 0.3s;
 
   &:hover {
-    background: linear-gradient(135deg, #7044a8, #c1479c);
+    background: #7048e8;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   }
 }
-// Task content
+
+
 .task-content {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem; // space between title & description
+  gap: 0.3rem;
 }
 
 .task-title {
   font-weight: 600;
   font-size: 1.15rem;
-  color: #343a40; // dark text for title
+  color: #343a40; 
 }
 
 .task-description {
   font-size: 0.95rem;
-  color: #6c757d; // softer text for description
+  color: #6c757d; 
 }

@@ -1,24 +1,26 @@
-# README
+# Task Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails 7 task management app with PostgreSQL, Turbo, and Stimulus, fully containerized with Docker Compose.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Development Setup
 
-* System dependencies
+Everything is handled by Docker Compose and the entrypoint script. To get started:
 
-* Configuration
+* **Build and start containers:**  
+  `docker-compose build && docker-compose up -d`
 
-* Database creation
+* **Access the app:**  
+  Open your browser at [http://localhost:3000](http://localhost:3000)
 
-* Database initialization
+* **Stop containers when done:**  
+  `docker-compose down`
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## Notes
 
-* Deployment instructions
-
-* ...
+* **Rails Server:** Runs on port `3000`  
+* **Database:** PostgreSQL runs in the `db` container on port `5432`  
+* **Live Updates:** Task completion toggles instantly using Turbo Frames and Stimulus controllers
