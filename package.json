@@ -25,8 +25,8 @@
   "scripts": {
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "sass --load-path=node_modules app/javascript/stylesheets/application.scss app/assets/builds/application.css",
-    "build:tailwind": "yarn tailwindcss-cli -i ./app/javascript/stylesheets/tailwind.scss -o ./app/assets/builds/application.css --minify",
+    "build:tailwind": "yarn tailwindcss-cli -i ./app/javascript/stylesheets/tailwind.scss -o ./app/assets/builds/tailwind.css --minify",
     "build": "yarn build:tailwind && yarn build:css && yarn build:js",
-    "watch": "yarn build:tailwind --watch & yarn watch:css & yarn build:js --watch",
+    "watch": "yarn build:tailwind --watch & yarn watch:css & yarn build:js --watch"
   }
 }
