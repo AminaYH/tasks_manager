@@ -1,8 +1,12 @@
-<li id="<%= dom_id(task) %>" class="tasks__item <%= 'tasks__item__completed' if task.completed %>">
+<li id="<%= dom_id(task) %>"
+    class="tasks__item <%= 'tasks__item__completed' if task.completed %>"
+    data-controller="inline-edit"
+    data-task-id="<%= task.id %>">
+
   <%= turbo_frame_tag dom_id(task) do %>
     <div class="task-content">
-      <div class="task-title"><%= task.title %></div>
-      <div class="task-description"><%= task.description %></div>
+      <div class="task-title" data-field="title"><%= task.title %></div>
+      <div class="task-description" data-field="description"><%= task.description %></div>
     </div>
 
     <div class="task-actions">
@@ -10,7 +14,7 @@
             task_path(task),
             method: :patch,
             params: { task: { completed: !task.completed } },
-            class: "btn btn-sm #{task.completed ? 'btn-warning' : 'btn-success'}",
+            class: "btn btn-sm #{task.completed ? 'btn-warning' : 'btn-success'}",  
             form: { data: { turbo_frame: dom_id(task) } } %>
 
       <%= button_to "Delete", task_path(task),

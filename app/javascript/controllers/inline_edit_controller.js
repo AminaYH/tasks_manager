@@ -42,16 +42,8 @@ export default class extends Controller {
       body: JSON.stringify({ task: { [field]: value } })
     })
       .then(response => {
-        if (response.ok) {
-          originalEl.innerText = value
-        } else {
-          console.error("Update failed", response)
-        }
-        inputEl.replaceWith(originalEl)
+        if (!response.ok) console.error("Update failed", response)
       })
-      .catch(err => {
-        console.error("Error updating task:", err)
-        inputEl.replaceWith(originalEl)
-      })
+      .catch(err => console.error("Error updating task:", err))
   }
 }
