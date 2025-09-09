@@ -2,6 +2,8 @@
 
 A Rails 7 task management app with PostgreSQL, Turbo, and Stimulus, fully containerized with Docker Compose.
 
+![Demo](https://raw.githubusercontent.com/AminaYH/tasks_manager/main/app/assets/images/Screen%20Recording%20-%20Sep%209%2C%202025-VEED.gif)
+
 ---
 
 ## Development Setup
